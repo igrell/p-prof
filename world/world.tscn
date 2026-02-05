@@ -10,7 +10,7 @@
 [ext_resource path="res://trainer/rude_man/rude_man.tres" type="Resource" id=8]
 [ext_resource path="res://trainer/red/red.tres" type="Resource" id=9]
 [ext_resource path="res://trainer/blue/pug.png" type="Texture" id=10]
-[ext_resource path="res://trainer/church.png" type="Texture" id=11]
+[ext_resource path="res://level_sprites/corridor1.png" type="Texture" id=11]
 [ext_resource path="res://world/player.gd" type="Script" id=12]
 [ext_resource path="res://trainer/dead_man/dead_man.tres" type="Resource" id=13]
 [ext_resource path="res://world/npc.tscn" type="PackedScene" id=14]
@@ -307,6 +307,7 @@ shape = SubResource( 53 )
 [node name="sprite" type="AnimatedSprite" parent="YSort/player"]
 frames = SubResource( 45 )
 animation = "west"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/player"]
