@@ -24,7 +24,7 @@ koleda"
 [resource]
 script = ExtResource( 1 )
 id = ""
-name = "Rude Man"
+name = "Portier"
 pokemon = [ ExtResource( 2 ) ]
 items = [  ]
 is_player = false

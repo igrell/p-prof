@@ -13,3 +13,9 @@ func _ready() -> void:
 func set_trainer(value) -> void:
 	trainer = value
 	$sprite.call_deferred("create_instance", true, trainer.world_graphic)
+
+func _on_Trigger_body_entered(body):
+	for node in get_children():
+		if node is Trigger:
+			node.connect("trigger", self, "emit_signal", ["encounter"])
+

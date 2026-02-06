@@ -1,18 +1,23 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://level_sprites/corridor1.png" type="Texture" id=1]
 [ext_resource path="res://entrance/exitEntrance.gd" type="Script" id=2]
 [ext_resource path="res://widgets/tween_ex.gd" type="Script" id=3]
+[ext_resource path="res://world/trigger.gd" type="Script" id=4]
 [ext_resource path="res://widgets/info_box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://music/mars.mp3" type="AudioStream" id=6]
 [ext_resource path="res://player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://entrance/entrance.gd" type="Script" id=8]
+[ext_resource path="res://world/text.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.25, 33.25 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 8.25, 13.5 )
+extents = Vector2( 8.25, 18 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 10, 13.5 )
 
 [node name="level" type="Node2D"]
 script = ExtResource( 8 )
@@ -94,9 +99,23 @@ script = ExtResource( 2 )
 
 [node name="trigger" type="Area2D" parent="exitEntrance"]
 collision_layer = 0
+script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exitEntrance/trigger"]
-position = Vector2( -4.25, 80.5 )
+position = Vector2( -4.25, 76 )
 shape = SubResource( 8 )
 
+[node name="ponder" type="Node2D" parent="."]
+script = ExtResource( 9 )
+text = "Ruminacja 1."
+
+[node name="trigger" type="Area2D" parent="ponder"]
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ponder/trigger"]
+position = Vector2( 54, 79.5 )
+shape = SubResource( 9 )
+
 [connection signal="body_entered" from="exitEntrance/trigger" to="exitEntrance" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="ponder/trigger" to="ponder" method="_on_trigger_body_entered"]

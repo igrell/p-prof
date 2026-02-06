@@ -25,7 +25,6 @@ func _on_area_entered(area):
 		return
 
 	set_deferred("monitoring", false)
-	print("Triggered1")
 	emit_signal("trigger")
 
 func _input(event) -> void:
@@ -41,5 +40,4 @@ func _input(event) -> void:
 	var player = find_parent("level").find_node("player")
 	if overlaps_area(player):
 		set_deferred("monitoring", false)
-		print("Triggered2")
 		emit_signal("trigger")
