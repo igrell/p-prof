@@ -2,6 +2,8 @@ extends Node2D
 
 export(Resource) var trainer
 
+class_name Player
+
 const tile_size = 16.0
 const speed := 100.0
 

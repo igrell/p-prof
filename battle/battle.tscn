@@ -21,9 +21,6 @@ mouse_filter = 2
 theme = ExtResource( 3 )
 color = Color( 0.113725, 0.368627, 0.482353, 1 )
 script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 player = ExtResource( 14 )
 enemy = ExtResource( 1 )
 
@@ -46,6 +43,7 @@ script = ExtResource( 2 )
 
 [node name="pokemon" type="Position2D" parent="player"]
 position = Vector2( 28, 73 )
+scale = Vector2( 0.984341, 1 )
 
 [node name="trainer" parent="player" instance_placeholder="res://trainer/blue/blue_trainer_graphic.tscn"]
 

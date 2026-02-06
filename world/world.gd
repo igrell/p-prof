@@ -45,3 +45,7 @@ func _on_encounter(trainer) -> void:
 	
 	trainer.emit_signal("beat")
 	FlagDB.flags[trainer.trainer.id + "_beat"] = true
+
+
+func _on_StartGameDetection_body_entered(body):
+	print("body")	

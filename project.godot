@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Door",
+"language": "GDScript",
+"path": "res://world/door.gd"
+}, {
 "base": "Resource",
 "class": "FlagMutation",
 "language": "GDScript",
@@ -44,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://moves/move_model.gd"
 }, {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://world/player.gd"
+}, {
 "base": "Resource",
 "class": "PokemonModel",
 "language": "GDScript",
@@ -75,6 +85,7 @@ _global_script_classes=[ {
 "path": "res://widgets/tween_ex.gd"
 } ]
 _global_script_class_icons={
+"Door": "",
 "FlagMutation": "",
 "Game": "",
 "GenericEncounter": "",
@@ -82,6 +93,7 @@ _global_script_class_icons={
 "Menu": "",
 "MoveGraphic": "",
 "MoveModel": "",
+"Player": "",
 "PokemonModel": "",
 "TextModel": "",
 "TrainerGraphic": "",
