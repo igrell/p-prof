@@ -221,17 +221,16 @@ position = Vector2( 4.5, -5 )
 shape = SubResource( 52 )
 
 [node name="exit" type="Node2D" parent="YSort"]
-visible = false
 position = Vector2( 140, 82 )
 script = ExtResource( 9 )
 
 [node name="Trigger" type="Area2D" parent="YSort/exit"]
-visible = false
 collision_layer = 0
 script = ExtResource( 24 )
 flag = [ "flags.has(\"dead_man_beat\")" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/exit/Trigger"]
+visible = false
 position = Vector2( 20, -1 )
 shape = SubResource( 50 )
 

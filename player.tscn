@@ -40,7 +40,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=21]
 radius = 8.0
 
-[node name="player" type="Area2D"]
+[node name="player" type="KinematicBody2D"]
 position = Vector2( 102, 78 )
 collision_mask = 3
 script = ExtResource( 10 )
@@ -55,7 +55,6 @@ shape = SubResource( 53 )
 [node name="sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 45 )
 animation = "west"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

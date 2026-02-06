@@ -49,4 +49,4 @@ func _on_encounter(trainer) -> void:
 
 func _on_StartGameDetection_body_entered(body):
 	if body is Player:
-		get_tree().change_scene("res://end.tscn")
+		get_tree().change_scene("res://stairs3.tscn")
