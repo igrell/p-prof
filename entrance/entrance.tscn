@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://entrance/entrance.png" type="Texture" id=1]
 [ext_resource path="res://entrance/exitEntrance.gd" type="Script" id=2]
@@ -21,7 +21,10 @@ extents = Vector2( 79.625, 33.25 )
 extents = Vector2( 8.25, 18 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 11, 16 )
+extents = Vector2( 9, 16 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 7, 5 )
 
 [sub_resource type="RayShape2D" id=10]
 length = 45.0
@@ -89,6 +92,19 @@ script = ExtResource( 4 )
 position = Vector2( 16.3125, 80 )
 shape = SubResource( 9 )
 
+[node name="wstep" type="Node2D" parent="YSort"]
+script = ExtResource( 9 )
+text = "Tego dnia miał się Doktor Zenon Ela przekonać o rozstrzygnięciu losów jego przeraźliwych w salach i na językach Uniwersytetu.
+Oto bowiem zmierzał na [color=red]Kolokwium Habilitacyjne[/color], które zdeterminować miało przede wszystkim "
+
+[node name="trigger" type="Area2D" parent="YSort/wstep"]
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/wstep/trigger"]
+position = Vector2( 153, 85 )
+shape = SubResource( 12 )
+
 [node name="winda" type="Node2D" parent="YSort"]
 script = ExtResource( 9 )
 text = "Winda.
@@ -115,7 +131,7 @@ position = Vector2( 115, 45 )
 shape = SubResource( 9 )
 
 [node name="portier" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 62, 77 )
+position = Vector2( 19, 16 )
 trainer = ExtResource( 10 )
 
 [node name="trigger" type="Area2D" parent="YSort/portier"]
@@ -131,7 +147,7 @@ scale = Vector2( 0.0118375, 0.0166078 )
 texture = ExtResource( 13 )
 
 [node name="player" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 145, 83 )
+position = Vector2( 144, 81 )
 
 [node name="info_box" parent="." instance=ExtResource( 5 )]
 visible = false
@@ -148,6 +164,7 @@ shape = SubResource( 11 )
 
 [connection signal="body_entered" from="YSort/exitEntrance/trigger" to="YSort/exitEntrance" method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="YSort/ponder/trigger" to="YSort/ponder" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/wstep/trigger" to="YSort/wstep" method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="YSort/winda/trigger" to="YSort/winda" method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="YSort/schody/trigger" to="YSort/schody" method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="YSort/portier/trigger" to="YSort/portier/trigger" method="_on_trigger_body_entered"]

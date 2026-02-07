@@ -12,17 +12,17 @@
 [ext_resource path="res://blinders.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 27.8819
-height = 144.138
+radius = 14.4904
+height = 112.349
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.25, 33.25 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8.25, 11.75 )
+extents = Vector2( 8.25, 14.875 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 10, 13.5 )
+extents = Vector2( 11.1327, 18.1221 )
 
 [node name="level" type="Node2D"]
 script = ExtResource( 6 )
@@ -47,13 +47,13 @@ texture = ExtResource( 1 )
 position = Vector2( 105, 56 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -46, 29 )
-rotation = 2.06123
+position = Vector2( -3, 27 )
+rotation = 2.29511
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( 1, -46 )
-rotation = 0.492183
+position = Vector2( 26, -48 )
+rotation = 0.677076
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
@@ -61,11 +61,21 @@ position = Vector2( 137, 24 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -25, 84 )
+position = Vector2( -23, 79 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -125, 8 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -108, -88 )
 shape = SubResource( 1 )
 
 [node name="player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 152, 94.75 )
+position = Vector2( 151, 88 )
+rotation = 2.23517e-08
+scale = Vector2( 1, 1 )
 
 [node name="info_box" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -79,7 +89,7 @@ script = ExtResource( 8 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exitStairs1/trigger"]
-position = Vector2( -2, 11.75 )
+position = Vector2( 3, 15.875 )
 shape = SubResource( 2 )
 
 [node name="ponder" type="Node2D" parent="."]
@@ -91,8 +101,8 @@ collision_layer = 0
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ponder/trigger"]
-position = Vector2( 87, 53 )
-rotation = 0.469494
+position = Vector2( 104.931, 43.0425 )
+rotation = 0.682424
 shape = SubResource( 3 )
 
 [node name="blinders" parent="." instance=ExtResource( 10 )]

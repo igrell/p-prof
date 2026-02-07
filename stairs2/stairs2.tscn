@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://stairs1/stairs1.png" type="Texture" id=1]
+[ext_resource path="res://stairs2/stairs2.png" type="Texture" id=1]
 [ext_resource path="res://widgets/tween_ex.gd" type="Script" id=2]
 [ext_resource path="res://widgets/info_box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://music/mars.mp3" type="AudioStream" id=4]
@@ -14,10 +14,10 @@ extents = Vector2( 80.25, 33.25 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 27.8819
-height = 144.138
+height = 79.3795
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8.25, 11.75 )
+extents = Vector2( 8.25, 13.875 )
 
 [node name="level" type="Node2D"]
 script = ExtResource( 6 )
@@ -42,8 +42,8 @@ texture = ExtResource( 1 )
 position = Vector2( 105, 56 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( 1, -46 )
-rotation = 0.492183
+position = Vector2( 14, -53 )
+rotation = 0.700548
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
@@ -51,16 +51,24 @@ position = Vector2( 137, 24 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -25, 84 )
+position = Vector2( -25, 80 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -120, 7 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -105, -89 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -46, 29 )
-rotation = 2.06123
+position = Vector2( -23, 27 )
+rotation = 2.28026
 shape = SubResource( 3 )
 
 [node name="player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 147, 92 )
+position = Vector2( 148.512, 89.0123 )
 
 [node name="info_box" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -74,7 +82,7 @@ script = ExtResource( 7 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exitStairs2/trigger"]
-position = Vector2( -2, 11.75 )
+position = Vector2( -1, 14.875 )
 shape = SubResource( 2 )
 
 [node name="blinders" parent="." instance=ExtResource( 8 )]
