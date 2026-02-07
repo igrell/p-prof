@@ -79,14 +79,10 @@ position = Vector2( -25, 84 )
 shape = SubResource( 1 )
 
 [node name="player" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 147, 92 )
+position = Vector2( 137, 92 )
+collision_mask = 0
 
 [node name="info_box" parent="." instance=ExtResource( 4 )]
 visible = false
 
 [node name="transition" parent="." instance_placeholder="res://widgets/transition.tscn"]
-
-[node name="StartGameDetection" type="Area2D" parent="."]
-collision_layer = 2
-
-[connection signal="body_entered" from="StartGameDetection" to="." method="_on_StartGameDetection_body_entered"]

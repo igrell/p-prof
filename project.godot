@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
-"class": "Door",
-"language": "GDScript",
-"path": "res://world/door.gd"
-}, {
 "base": "Resource",
 "class": "FlagMutation",
 "language": "GDScript",
@@ -85,7 +80,6 @@ _global_script_classes=[ {
 "path": "res://widgets/tween_ex.gd"
 } ]
 _global_script_class_icons={
-"Door": "",
 "FlagMutation": "",
 "Game": "",
 "GenericEncounter": "",

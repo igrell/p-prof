@@ -17,7 +17,19 @@ func test_() -> bool:
 			return false
 	return true
 
-func _on_area_entered(area):
+func _on_trigger_body_entered(body):
+	if passive:
+		return
+	
+	if not test_():
+		return
+
+	if body is Player:
+		set_deferred("monitoring", false)
+		emit_signal("trigger")		
+
+# deprecated ?
+func _on_trigger_area_entered(area):
 	if passive:
 		return
 	
@@ -25,6 +37,7 @@ func _on_area_entered(area):
 		return
 
 	set_deferred("monitoring", false)
+	print("trigger1")
 	emit_signal("trigger")
 
 func _input(event) -> void:
@@ -41,3 +54,6 @@ func _input(event) -> void:
 	if overlaps_area(player):
 		set_deferred("monitoring", false)
 		emit_signal("trigger")
+		
+
+

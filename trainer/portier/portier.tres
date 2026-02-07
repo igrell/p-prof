@@ -1,19 +1,19 @@
 [gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://trainer/trainer_model.gd" type="Script" id=1]
-[ext_resource path="res://pokemon/spikey/spikey.tres" type="Resource" id=2]
-[ext_resource path="res://trainer/rude_man/rude_man_battle_graphic.tscn" type="PackedScene" id=3]
-[ext_resource path="res://trainer/rude_man/rude_man_world_graphic.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pokemon/wizard_hat/wizard_hat.tres" type="Resource" id=2]
+[ext_resource path="res://trainer/portier/portier_battle_graphic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://trainer/portier/portier_world_graphic.tscn" type="PackedScene" id=4]
 [ext_resource path="res://trainer/text_model.gd" type="Script" id=5]
-[ext_resource path="res://trainer/rude_man/rude_man_world_loose.gd" type="Script" id=6]
+[ext_resource path="res://trainer/portier/portier_world_loose.gd" type="Script" id=6]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 5 )
-text = "Please just leave. You've upset everyone."
+text = "Co pan mysli, ze tu sie drzwi nie zamyka?"
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 5 )
-text = "I'm crying."
+text = "Za malo mi placa na to."
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )

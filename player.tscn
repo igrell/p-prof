@@ -21,6 +21,11 @@ animations = [ {
 "name": "west",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 8 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "south",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "east",
@@ -29,11 +34,6 @@ animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "north",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "south",
 "speed": 5.0
 } ]
 
@@ -55,6 +55,7 @@ shape = SubResource( 53 )
 [node name="sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 45 )
 animation = "west"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
