@@ -1,68 +1,58 @@
-extends Node2D
+tool
+extends KinematicBody2D
 
 export(Resource) var trainer
 
 class_name Player
 
-const tile_size = 16.0
 const speed := 100.0
 
-
 const animation_ = {
-	Vector2.ZERO: "idle",
-	Vector2.LEFT: "west",
-	Vector2.RIGHT: "east",
-	Vector2.DOWN: "south",
-	Vector2.UP: "north"
+	"idle": "idle",
+	"west": "west",
+	"east": "east",
+	"south": "south",
+	"north": "north"
 }
 
-onready var ray_:RayCast2D = $ray
-onready var moves_ := []
-var moving_to_
-
+onready var sprite = $sprite
+var velocity := Vector2.ZERO
 var pause_controls := false
 
-func _ready() -> void:
-	pass
-
-func floor_vec2(vector:Vector2) -> Vector2:
-	return Vector2(round(vector.x / 16.0) * 16.0, round(vector.y / 16.0) * 16.0)
-
-func _process(delta:float):
-	var direction := Vector2()
+func _physics_process(_delta:float):
+	var direction := Vector2.ZERO
 
 	if not pause_controls:
 		if Input.is_action_pressed("ui_down"):
-			direction = Vector2.DOWN
-
+			direction.y += 1
 		if Input.is_action_pressed("ui_up"):
-			direction = Vector2.UP
-
+			direction.y -= 1
 		if Input.is_action_pressed("ui_left"):
-			direction = Vector2.LEFT
-
+			direction.x -= 1
 		if Input.is_action_pressed("ui_right"):
-			direction = Vector2.RIGHT
+			direction.x += 1
 
-		if direction != Vector2():
-			if moves_.find(direction) == -1:
-				moves_.push_back(direction)
+	if direction.length() > 0:
+		direction = direction.normalized()
+		velocity = direction * speed
+	else:
+		velocity = Vector2.ZERO
 
-	if moving_to_ == null and not moves_.empty():
-		ray_.rotation = moves_.front().angle()
-		$ray2.rotation  = moves_.front().angle() + PI * 1.5
-		ray_.force_raycast_update()
-		if ray_.is_colliding():
-			$sprite.animation = animation_[moves_.front()]
-			moves_.pop_front()
+	# Update animation based on direction
+	if velocity.length() > 0:
+		if abs(velocity.x) > abs(velocity.y):
+			if velocity.x > 0:
+				sprite.animation = animation_["east"]
+			else:
+				sprite.animation = animation_["west"]
 		else:
-			moving_to_ = floor_vec2(global_position) + moves_.front() * tile_size
-
-	if not moves_.empty():
-		$sprite.animation = animation_[moves_.front()]
-		global_position = global_position.move_toward(moving_to_, delta * speed)
-		if global_position.distance_to(moving_to_) <= 0.1:
-			global_position = moving_to_
-			moving_to_ = null
-			moves_.pop_front()
+			if velocity.y > 0:
+				sprite.animation = animation_["south"]
+			else:
+				sprite.animation = animation_["north"]
+	else:
+		sprite.animation = animation_["idle"]
+	
+	# Let Godot's physics engine handle collisions and sliding
+	move_and_slide(velocity, Vector2.UP)
 

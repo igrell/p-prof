@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/room1.png-8224eda698a6b7755c2718ca15dacf57.stex"
+path="res://.import/stairs1.png-b63408fee2deef0035ec3d955f9f06c0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level_sprites/room1.png"
-dest_files=[ "res://.import/room1.png-8224eda698a6b7755c2718ca15dacf57.stex" ]
+source_file="res://stairs1/stairs1.png"
+dest_files=[ "res://.import/stairs1.png-b63408fee2deef0035ec3d955f9f06c0.stex" ]
 
 [params]
 

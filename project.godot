@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://moves/move_model.gd"
 }, {
-"base": "Node2D",
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://world/player.gd"
@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Zenona Eli Kolokwium Habilitacyjne"
-run/main_scene="res://entrance/entrance.tscn"
+run/main_scene="res://title/title.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -107,6 +107,7 @@ config/icon="res://icon.png"
 Cam="*res://camera.tscn"
 Pause="*res://pause.tscn"
 FlagDB="*res://flag_db.gd"
+FadeTransition="*res://widgets/FadeTransition.tscn"
 
 [display]
 

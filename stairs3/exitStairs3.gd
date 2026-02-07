@@ -8,5 +8,5 @@ func _on_trigger_body_entered(body):
 		yield(tween.wait(1), "done")
 		player.pause_controls = false
 		info_box.visible = false
-		get_tree().change_scene("res://room1/room1.tscn")
+		FadeTransition.fade_to_scene("res://room1/room1.tscn")
 	

@@ -30,7 +30,7 @@ func set_name(value:String) -> void:
 	name = value
 	prop_change_("name", old, value)
 
-func set_level(value) -> void:
+func set_level(_value) -> void:
 	pass
 
 func set_hp(value:int) -> void:

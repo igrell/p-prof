@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stairs2.png-e9d1d33ec4c475c148f7bcd683f81b7c.stex"
+path="res://.import/f2.png-9cbd99daa9b60bc3e594d05e7ea6a9c1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level_sprites/stairs2.png"
-dest_files=[ "res://.import/stairs2.png-e9d1d33ec4c475c148f7bcd683f81b7c.stex" ]
+source_file="res://trainer/zenon_ela/f2.png"
+dest_files=[ "res://.import/f2.png-9cbd99daa9b60bc3e594d05e7ea6a9c1.stex" ]
 
 [params]
 

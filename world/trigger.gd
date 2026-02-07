@@ -29,7 +29,7 @@ func _on_trigger_body_entered(body):
 		emit_signal("trigger")		
 
 # deprecated ?
-func _on_trigger_area_entered(area):
+func _on_trigger_area_entered(_area):
 	if passive:
 		return
 	
@@ -40,7 +40,7 @@ func _on_trigger_area_entered(area):
 	print("trigger1")
 	emit_signal("trigger")
 
-func _input(event) -> void:
+func _input(_event) -> void:
 	if not Input.is_action_just_pressed("ui_accept"):
 		return
 	

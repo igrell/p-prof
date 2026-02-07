@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/church.png-1bf922a20c8bb29a24cc3d932dc799e0.stex"
+path="res://.import/title.png-9387296d541c19dc24203540e6923378.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level_sprites/church.png"
-dest_files=[ "res://.import/church.png-1bf922a20c8bb29a24cc3d932dc799e0.stex" ]
+source_file="res://title/title.png"
+dest_files=[ "res://.import/title.png-9387296d541c19dc24203540e6923378.stex" ]
 
 [params]
 

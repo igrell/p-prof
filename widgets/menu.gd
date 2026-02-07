@@ -47,7 +47,7 @@ func _ready() -> void:
 	for path in menu_items:
 		add_user_signal(get_node(path).name)
 
-func _input(event):
+func _input(_event):
 	input_ = true
 
 	if Input.is_action_just_pressed("ui_up"):

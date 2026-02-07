@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/corridor1.png-40301db9dcd6796ae08908b9614df132.stex"
+path="res://.import/groundSpike02_0007.png-5ae9985a3f39f97e2cd62ba11bc787b9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level_sprites/corridor1.png"
-dest_files=[ "res://.import/corridor1.png-40301db9dcd6796ae08908b9614df132.stex" ]
+source_file="res://trainer/komisarz/groundSpike02_0007.png"
+dest_files=[ "res://.import/groundSpike02_0007.png-5ae9985a3f39f97e2cd62ba11bc787b9.stex" ]
 
 [params]
 
