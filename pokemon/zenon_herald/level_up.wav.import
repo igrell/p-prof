@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/level_up.wav-023ea4dac0c45b2082bd69636f4d65e2.sample"
+
+[deps]
+
+source_file="res://pokemon/zenon_herald/level_up.wav"
+dest_files=[ "res://.import/level_up.wav-023ea4dac0c45b2082bd69636f4d65e2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

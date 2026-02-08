@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/learn.wav-93f41b5c81aa4b18966a0d7820a5aab7.sample"
+
+[deps]
+
+source_file="res://pokemon/komisja3/learn.wav"
+dest_files=[ "res://.import/learn.wav-93f41b5c81aa4b18966a0d7820a5aab7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

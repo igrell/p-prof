@@ -18,11 +18,11 @@ height = 112.349
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.25, 33.25 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 11.3152, 32.7601 )
+
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.25, 14.875 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 11.1327, 18.1221 )
 
 [node name="level" type="Node2D"]
 script = ExtResource( 6 )
@@ -52,7 +52,7 @@ rotation = 2.29511
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( 26, -48 )
+position = Vector2( 19, -36 )
 rotation = 0.677076
 shape = SubResource( 1 )
 
@@ -62,6 +62,7 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
 position = Vector2( -23, 79 )
+rotation = -0.00130255
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
@@ -69,13 +70,61 @@ position = Vector2( -125, 8 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -108, -88 )
+position = Vector2( -88, -72 )
 shape = SubResource( 1 )
 
 [node name="player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 151, 88 )
+position = Vector2( 155.165, 95.5075 )
 rotation = 2.23517e-08
-scale = Vector2( 1, 1 )
+
+[node name="teksty" type="Node2D" parent="YSort"]
+
+[node name="ponder1" type="Node2D" parent="YSort/teksty"]
+script = ExtResource( 9 )
+text = "Spożywanie owoców z drzewa poznania jest, jak wiadomo, zabronione, przeciw czemu jednak ustawowo wystąpić powinna 
+bezczelnie w takiej sytuacji, no bo jak inaczej
+osoba habilitanta."
+
+[node name="trigger" type="Area2D" parent="YSort/teksty/ponder1"]
+collision_layer = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/teksty/ponder1/trigger"]
+position = Vector2( 135, 69 )
+rotation = 0.682424
+scale = Vector2( 0.986237, 1.0177 )
+shape = SubResource( 3 )
+
+[node name="ponder2" type="Node2D" parent="YSort/teksty"]
+scale = Vector2( 0.888046, 0.816701 )
+script = ExtResource( 9 )
+text = "Zgodnie z prawem boskim, powinna osoba habilitanta zrealizować oryginalne osiągnięcie naukowe, dowodzące, że najadła się, ile mogła, z drzewa poznania,
+dzięki czemu poznała coś nowego i opublikowała w swym dziele rozwijającym jak nie wiem co, dyscyplinę naukową."
+
+[node name="trigger" type="Area2D" parent="YSort/teksty/ponder2"]
+collision_layer = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/teksty/ponder2/trigger"]
+position = Vector2( 108, 46 )
+rotation = 0.682424
+shape = SubResource( 3 )
+
+[node name="ponder3" type="Node2D" parent="YSort/teksty"]
+scale = Vector2( 0.437127, 0.442576 )
+script = ExtResource( 9 )
+text = "Jest to typowy konflikt tragiczny: z jednej strony prawo boskie, z drugiej zaś prawo uniwersyteckie (niezbyt ludzkie).
+Zniesienie i rozwiązanie tego konfliktu stanowi cel kolokwium habilitacyjnego."
+
+[node name="trigger" type="Area2D" parent="YSort/teksty/ponder3"]
+collision_layer = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/teksty/ponder3/trigger"]
+position = Vector2( 116.9, 35.3384 )
+rotation = -0.0174533
+scale = Vector2( 1.27061, 1.28765 )
+shape = SubResource( 3 )
 
 [node name="info_box" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -92,20 +141,9 @@ collision_layer = 0
 position = Vector2( 3, 15.875 )
 shape = SubResource( 2 )
 
-[node name="ponder" type="Node2D" parent="."]
-script = ExtResource( 9 )
-text = "Ruminacja 2."
-
-[node name="trigger" type="Area2D" parent="ponder"]
-collision_layer = 0
-script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ponder/trigger"]
-position = Vector2( 104.931, 43.0425 )
-rotation = 0.682424
-shape = SubResource( 3 )
-
 [node name="blinders" parent="." instance=ExtResource( 10 )]
 
+[connection signal="body_entered" from="YSort/teksty/ponder1/trigger" to="YSort/teksty/ponder1" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/teksty/ponder2/trigger" to="YSort/teksty/ponder2" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/teksty/ponder3/trigger" to="YSort/teksty/ponder3" method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="exitStairs1/trigger" to="exitStairs1" method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="ponder/trigger" to="ponder" method="_on_trigger_body_entered"]

@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://trainer/dead_man/dead_man.tres" type="Resource" id=1]
+[ext_resource path="res://trainer/zenon_ela/zenon_ela.tres" type="Resource" id=1]
 [ext_resource path="res://battle/graphic.gd" type="Script" id=2]
 [ext_resource path="res://widgets/theme.tres" type="Theme" id=3]
 [ext_resource path="res://widgets/pokemon_info_player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://trainer/komisja/komisja.tres" type="Resource" id=5]
 [ext_resource path="res://widgets/info_box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://widgets/menu_button.tscn" type="PackedScene" id=7]
 [ext_resource path="res://battle/battle.gd" type="Script" id=8]
 [ext_resource path="res://widgets/sprites/panel.png" type="Texture" id=11]
 [ext_resource path="res://widgets/menu.gd" type="Script" id=12]
 [ext_resource path="res://widgets/pokemon_info_enemy.tscn" type="PackedScene" id=13]
-[ext_resource path="res://trainer/blue/blue.tres" type="Resource" id=14]
 [ext_resource path="res://widgets/tween_ex.gd" type="Script" id=17]
 [ext_resource path="res://widgets/pokemon_menu.tscn" type="PackedScene" id=18]
 
@@ -21,8 +21,8 @@ mouse_filter = 2
 theme = ExtResource( 3 )
 color = Color( 0.278431, 0.215686, 0.168627, 1 )
 script = ExtResource( 8 )
-player = ExtResource( 14 )
-enemy = ExtResource( 1 )
+player = ExtResource( 1 )
+enemy = ExtResource( 5 )
 
 [node name="tween" type="Tween" parent="."]
 script = ExtResource( 17 )
@@ -43,7 +43,6 @@ script = ExtResource( 2 )
 
 [node name="pokemon" type="Position2D" parent="player"]
 position = Vector2( 28, 73 )
-scale = Vector2( 0.984341, 1 )
 
 [node name="trainer" parent="player" instance_placeholder="res://trainer/blue/blue_trainer_graphic.tscn"]
 
@@ -202,8 +201,8 @@ __meta__ = {
 [node name="col_1" type="VBoxContainer" parent="yes_no_menu/m/m"]
 margin_left = 6.0
 margin_top = 4.0
-margin_right = 39.0
-margin_bottom = 29.0
+margin_right = 38.0
+margin_bottom = 28.0
 custom_constants/separation = -1
 
 [node name="yes" parent="yes_no_menu/m/m/col_1" instance=ExtResource( 7 )]

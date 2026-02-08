@@ -5,7 +5,7 @@ export(Resource) var trainer
 
 class_name Player
 
-const speed := 100.0
+const speed := 40.0
 
 const animation_ = {
 	"idle": "idle",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://stairs2/stairs2.png" type="Texture" id=1]
 [ext_resource path="res://widgets/tween_ex.gd" type="Script" id=2]
@@ -8,15 +8,23 @@
 [ext_resource path="res://stairs2/stairs2.gd" type="Script" id=6]
 [ext_resource path="res://stairs2/exitStairs2.gd" type="Script" id=7]
 [ext_resource path="res://blinders.tscn" type="PackedScene" id=8]
+[ext_resource path="res://world/trigger.gd" type="Script" id=9]
+[ext_resource path="res://world/text.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.25, 33.25 )
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 27.8819
-height = 79.3795
+radius = 14.4904
+height = 112.349
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 80.25, 33.25 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4.18249, 22.8319 )
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 8.25, 13.875 )
 
 [node name="level" type="Node2D"]
@@ -32,59 +40,119 @@ follow_viewport_enable = true
 script = ExtResource( 2 )
 
 [node name="Stairs2" type="Sprite" parent="."]
-position = Vector2( 80, 72 )
+position = Vector2( 59, 20 )
 scale = Vector2( 0.129863, 0.129968 )
 texture = ExtResource( 1 )
+offset = Vector2( 161.709, 400.099 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="NoEntryCollisions" type="StaticBody2D" parent="YSort"]
 position = Vector2( 105, 56 )
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( 14, -53 )
-rotation = 0.700548
-shape = SubResource( 1 )
-
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
 position = Vector2( 137, 24 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -25, 80 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -120, 7 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -105, -89 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -23, 27 )
-rotation = 2.28026
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -3, 27 )
+rotation = 2.29511
 shape = SubResource( 3 )
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( 21, -37 )
+rotation = 0.712772
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -89, -73 )
+rotation = 0.000548581
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -23, 79 )
+rotation = -0.00130255
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -125, 6 )
+shape = SubResource( 4 )
+
 [node name="player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 148.512, 89.0123 )
+position = Vector2( 150.91, 95.5842 )
+
+[node name="Node2D" type="Node2D" parent="YSort"]
+
+[node name="teksty" type="Node2D" parent="YSort"]
+
+[node name="ponder1" type="Node2D" parent="YSort/teksty"]
+script = ExtResource( 10 )
+text = "Złamanie boskiego prawa kończy się nieprzyjemnym bieganiem na golasa, złamanie prawa uniwersyteckiego niekoniecznie, 
+choć jest duże ryzyko, że odkrywczość może Komisję Habilitacyjną nieźle zdenerwować."
+
+[node name="trigger" type="Area2D" parent="YSort/teksty/ponder1"]
+collision_layer = 0
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/teksty/ponder1/trigger"]
+position = Vector2( 94.9764, 25.0044 )
+rotation = 0.682424
+scale = Vector2( 0.986237, 1.0177 )
+shape = SubResource( 5 )
+
+[node name="ponder2" type="Node2D" parent="YSort/teksty"]
+position = Vector2( -35, -26.0384 )
+script = ExtResource( 10 )
+text = "Dlatego właśnie najlepiej opublikować dzieło napisane zupełnie na czczo, bez uprzedniego spożycia choćby pestki lub zgniłka z drzewa poznania,
+wskutek czego, co prawda, nie posuwa się swojej dziedziny naprzód, ale za to szanuje się boskie ustalenia zalecające, żeby się zanadto nie wychylać, 
+bo można niechcący wychylić się też ponad oceniającą Komisję i Radę Wydziału, będące w oczywisty sposób epifanią boskości."
+
+[node name="trigger" type="Area2D" parent="YSort/teksty/ponder2"]
+collision_layer = 0
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/teksty/ponder2/trigger"]
+position = Vector2( 163.019, 84.0912 )
+rotation = 0.682424
+scale = Vector2( 0.986237, 1.0177 )
+shape = SubResource( 5 )
+
+[node name="ponder3" type="Node2D" parent="YSort/teksty"]
+position = Vector2( -94, -52.0767 )
+script = ExtResource( 10 )
+text = "Chwilową ulgę dało Zenonie Eli przypomnienie sobie, iż przed ewentualną kompromitacją merytoryczną chroni go 
+nabyta wraz z uzyskaniem tytułu doktora znajomość całości Kanonu
+(tak, tego Kanonu)
+"
+
+[node name="trigger" type="Area2D" parent="YSort/teksty/ponder3"]
+collision_layer = 0
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/teksty/ponder3/trigger"]
+position = Vector2( 116, 57.0843 )
+rotation = -0.0296706
+scale = Vector2( 0.986237, 1.0177 )
+shape = SubResource( 5 )
+
+[node name="exitStairs2" type="Node2D" parent="YSort"]
+script = ExtResource( 7 )
+
+[node name="trigger" type="Area2D" parent="YSort/exitStairs2"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/exitStairs2/trigger"]
+position = Vector2( -1, 14.875 )
+shape = SubResource( 6 )
 
 [node name="info_box" parent="." instance=ExtResource( 3 )]
 visible = false
 
 [node name="transition" parent="." instance_placeholder="res://widgets/transition.tscn"]
 
-[node name="exitStairs2" type="Node2D" parent="."]
-script = ExtResource( 7 )
-
-[node name="trigger" type="Area2D" parent="exitStairs2"]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="exitStairs2/trigger"]
-position = Vector2( -1, 14.875 )
-shape = SubResource( 2 )
-
 [node name="blinders" parent="." instance=ExtResource( 8 )]
 
-[connection signal="body_entered" from="exitStairs2/trigger" to="exitStairs2" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/teksty/ponder1/trigger" to="YSort/teksty/ponder1" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/teksty/ponder2/trigger" to="YSort/teksty/ponder2" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/teksty/ponder3/trigger" to="YSort/teksty/ponder3" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/exitStairs2/trigger" to="YSort/exitStairs2" method="_on_trigger_body_entered"]

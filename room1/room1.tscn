@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://room1/room1.png" type="Texture" id=1]
 [ext_resource path="res://room1/room1.gd" type="Script" id=2]
@@ -6,22 +6,19 @@
 [ext_resource path="res://widgets/info_box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://music/mars.mp3" type="AudioStream" id=5]
 [ext_resource path="res://player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://world/trigger.gd" type="Script" id=7]
+[ext_resource path="res://room1/exitRoom1.gd" type="Script" id=7]
 [ext_resource path="res://blinders.tscn" type="PackedScene" id=8]
-[ext_resource path="res://world/npc.tscn" type="PackedScene" id=9]
-[ext_resource path="res://trainer/komisarz/komisarz.tres" type="Resource" id=10]
+[ext_resource path="res://world/trigger.gd" type="Script" id=9]
+[ext_resource path="res://world/text.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 80.25, 33.25 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 24.5, 5.00006 )
+extents = Vector2( 80.25, 48.625 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 24.25, 5.49996 )
+extents = Vector2( 20.1098, 5.72003 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 24, 5.49997 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10.6562, 43.4844 )
 
 [node name="level" type="Node2D"]
 script = ExtResource( 2 )
@@ -47,7 +44,11 @@ offset = Vector2( 708.439, 161.578 )
 position = Vector2( 105, 56 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -25, -34 )
+position = Vector2( -24, -18 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( 136, 36 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
@@ -59,12 +60,34 @@ position = Vector2( -187, 29 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -25, 84 )
+position = Vector2( -25, 121 )
 shape = SubResource( 1 )
 
 [node name="player" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 153.674, 92 )
+position = Vector2( 150, 119 )
 collision_mask = 0
+
+[node name="obiekty" type="Node2D" parent="YSort"]
+
+[node name="ponder1" type="Node2D" parent="YSort/obiekty"]
+position = Vector2( -35, -26.0384 )
+script = ExtResource( 10 )
+text = "Habilitacja doktora Zenona Eli była pracą z pogranicza filozofii nauki i historii filozofii starożytnej.
+Główną tezą jej było, że wszystko jest wodą.
+W pierwszym rozdziale autor wyliczał wszystko, po czym dokonywał szczegółowej klasyfikacji tego wszystkiego.
+W rozdziale drugim wskazywał po kolei, że cechą konstytutywną każdej wyróżnionej klasy jest woda.
+W rozdziale trzecim dokonywał [color=red]porównawczej[/color]analizy wody poszczególnych klas, by wykazać, że jest to faktycznie ta sama woda,
+a w konsekwencji sfomułować tezę o jedności wszechrzeczy."
+
+[node name="trigger" type="Area2D" parent="YSort/obiekty/ponder1"]
+collision_layer = 0
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/obiekty/ponder1/trigger"]
+position = Vector2( 144, 117.038 )
+rotation = -0.0169534
+scale = Vector2( 0.986237, 1.0177 )
+shape = SubResource( 3 )
 
 [node name="info_box" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -73,45 +96,15 @@ visible = false
 
 [node name="blinders" parent="." instance=ExtResource( 8 )]
 
-[node name="komisarz1" parent="." instance=ExtResource( 9 )]
-position = Vector2( 8, 67 )
-trainer = ExtResource( 10 )
-
-[node name="trigger" type="Area2D" parent="komisarz1"]
-collision_layer = 0
+[node name="exitRoom1" type="Node2D" parent="."]
 script = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="komisarz1/trigger"]
-position = Vector2( 113, 14.5 )
-rotation = -1.5708
+[node name="trigger" type="Area2D" parent="exitRoom1"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exitRoom1/trigger"]
+position = Vector2( 22, 85 )
 shape = SubResource( 2 )
 
-[node name="komisarz2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 8, 83 )
-trainer = ExtResource( 10 )
-
-[node name="trigger" type="Area2D" parent="komisarz2"]
-collision_layer = 0
-script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="komisarz2/trigger"]
-position = Vector2( 83, -2 )
-rotation = -1.5708
-shape = SubResource( 3 )
-
-[node name="komisarz3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 8, 98 )
-trainer = ExtResource( 10 )
-
-[node name="trigger" type="Area2D" parent="komisarz3"]
-collision_layer = 0
-script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="komisarz3/trigger"]
-position = Vector2( 53, -17 )
-rotation = -1.5708
-shape = SubResource( 4 )
-
-[connection signal="body_entered" from="komisarz1/trigger" to="komisarz1/trigger" method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="komisarz2/trigger" to="komisarz2/trigger" method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="komisarz3/trigger" to="komisarz3/trigger" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/obiekty/ponder1/trigger" to="YSort/obiekty/ponder1" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="exitRoom1/trigger" to="exitRoom1" method="_on_trigger_body_entered"]

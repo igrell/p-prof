@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://widgets/theme.tres" type="Theme" id=1]
-[ext_resource path="res://pokemon/horns/learn.wav" type="AudioStream" id=2]
+[ext_resource path="res://pokemon/komisja1/learn.wav" type="AudioStream" id=2]
 [ext_resource path="res://world/npc.gd" type="Script" id=5]
 
 [node name="npc" type="Node2D" groups=["trainer"]]
@@ -19,9 +19,6 @@ margin_bottom = -5.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="spot_audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )

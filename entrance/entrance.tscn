@@ -20,14 +20,14 @@ extents = Vector2( 79.625, 33.25 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 8.25, 18 )
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 9, 16 )
+[sub_resource type="RayShape2D" id=10]
+length = 45.0
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 7, 5 )
 
-[sub_resource type="RayShape2D" id=10]
-length = 45.0
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 9, 13.5 )
 
 [sub_resource type="CircleShape2D" id=11]
 
@@ -53,7 +53,6 @@ texture = ExtResource( 1 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="NoEntryCollisions" type="StaticBody2D" parent="YSort"]
-visible = false
 position = Vector2( 105, 56 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
@@ -80,56 +79,6 @@ script = ExtResource( 4 )
 position = Vector2( -4.25, 76 )
 shape = SubResource( 8 )
 
-[node name="ponder" type="Node2D" parent="YSort"]
-script = ExtResource( 9 )
-text = "Ruminacja 1."
-
-[node name="trigger" type="Area2D" parent="YSort/ponder"]
-collision_layer = 0
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/ponder/trigger"]
-position = Vector2( 16.3125, 80 )
-shape = SubResource( 9 )
-
-[node name="wstep" type="Node2D" parent="YSort"]
-script = ExtResource( 9 )
-text = "Tego dnia miał się Doktor Zenon Ela przekonać o rozstrzygnięciu losów jego przeraźliwych w salach i na językach Uniwersytetu.
-Oto bowiem zmierzał na [color=red]Kolokwium Habilitacyjne[/color], które zdeterminować miało przede wszystkim "
-
-[node name="trigger" type="Area2D" parent="YSort/wstep"]
-collision_layer = 0
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/wstep/trigger"]
-position = Vector2( 153, 85 )
-shape = SubResource( 12 )
-
-[node name="winda" type="Node2D" parent="YSort"]
-script = ExtResource( 9 )
-text = "Winda.
-Znowu nie działa."
-
-[node name="trigger" type="Area2D" parent="YSort/winda"]
-collision_layer = 0
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/winda/trigger"]
-position = Vector2( 146, 50 )
-shape = SubResource( 9 )
-
-[node name="schody" type="Node2D" parent="YSort"]
-script = ExtResource( 9 )
-text = "Już za późno na ucieczkę."
-
-[node name="trigger" type="Area2D" parent="YSort/schody"]
-collision_layer = 0
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/schody/trigger"]
-position = Vector2( 115, 45 )
-shape = SubResource( 9 )
-
 [node name="portier" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 19, 16 )
 trainer = ExtResource( 10 )
@@ -147,7 +96,51 @@ scale = Vector2( 0.0118375, 0.0166078 )
 texture = ExtResource( 13 )
 
 [node name="player" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 144, 81 )
+position = Vector2( 150.667, 80 )
+
+[node name="teksty" type="Node2D" parent="YSort"]
+
+[node name="wstep" type="Node2D" parent="YSort/teksty"]
+script = ExtResource( 9 )
+text = "Światło odbijało się leniwie od niewytartych kafelków, iluminując po augustiańsku gmach Prostytutu Filozofii.
+Dzień ten, mimo iż na pozór zwyczajny, taki jednak ani trochę nie był.
+Bowiem to właśnie dziś miał się Doktor Zenon Ela przekonać o rozstrzygnięciu losów jego przeraźliwych w salach i na językach Uniwersytetu.
+Oto bowiem zmierzał na [color=#be2424]Kolokwium Habilitacyjne[/color]."
+
+[node name="trigger" type="Area2D" parent="YSort/teksty/wstep"]
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/teksty/wstep/trigger"]
+position = Vector2( 153, 85 )
+shape = SubResource( 12 )
+
+[node name="obiekty" type="Node2D" parent="YSort"]
+
+[node name="schody" type="Node2D" parent="YSort/obiekty"]
+script = ExtResource( 9 )
+text = "Już za późno na ucieczkę."
+
+[node name="trigger" type="Area2D" parent="YSort/obiekty/schody"]
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/obiekty/schody/trigger"]
+position = Vector2( 113, 46 )
+shape = SubResource( 9 )
+
+[node name="winda" type="Node2D" parent="YSort/obiekty"]
+script = ExtResource( 9 )
+text = "Winda.
+Znowu nie działa."
+
+[node name="trigger" type="Area2D" parent="YSort/obiekty/winda"]
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/obiekty/winda/trigger"]
+position = Vector2( 146, 47 )
+shape = SubResource( 9 )
 
 [node name="info_box" parent="." instance=ExtResource( 5 )]
 visible = false
@@ -163,8 +156,7 @@ position = Vector2( 0, -1 )
 shape = SubResource( 11 )
 
 [connection signal="body_entered" from="YSort/exitEntrance/trigger" to="YSort/exitEntrance" method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="YSort/ponder/trigger" to="YSort/ponder" method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="YSort/wstep/trigger" to="YSort/wstep" method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="YSort/winda/trigger" to="YSort/winda" method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="YSort/schody/trigger" to="YSort/schody" method="_on_trigger_body_entered"]
 [connection signal="body_entered" from="YSort/portier/trigger" to="YSort/portier/trigger" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/teksty/wstep/trigger" to="YSort/teksty/wstep" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/obiekty/schody/trigger" to="YSort/obiekty/schody" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/obiekty/winda/trigger" to="YSort/obiekty/winda" method="_on_trigger_body_entered"]

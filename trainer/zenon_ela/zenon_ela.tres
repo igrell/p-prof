@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://trainer/trainer_model.gd" type="Script" id=1]
+[ext_resource path="res://pokemon/zenon_herald/zenon_herald.tres" type="Resource" id=2]
+[ext_resource path="res://pokemon/zenon_biczownik/zenon_biczownik.tres" type="Resource" id=3]
+[ext_resource path="res://trainer/zenon_ela/zenon_ela_trainer_graphic.tscn" type="PackedScene" id=4]
+
+[resource]
+script = ExtResource( 1 )
+id = "0"
+name = "Zenon Ela"
+pokemon = [ ExtResource( 2 ), ExtResource( 3 ) ]
+items = [  ]
+is_player = true
+beat_flag_mutations = [  ]
+loose_flag_mutations = [  ]
+battle_graphic = ExtResource( 4 )

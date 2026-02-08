@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/level_up.wav-52b04b581110edb0c9bed96769a9b020.sample"
+
+[deps]
+
+source_file="res://pokemon/komisja3/level_up.wav"
+dest_files=[ "res://.import/level_up.wav-52b04b581110edb0c9bed96769a9b020.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

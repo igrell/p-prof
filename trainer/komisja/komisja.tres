@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=11 format=2]
+
+[ext_resource path="res://trainer/text_model.gd" type="Script" id=1]
+[ext_resource path="res://trainer/trainer_model.gd" type="Script" id=2]
+[ext_resource path="res://trainer/komisja/komisja_world_loose.gd" type="Script" id=3]
+[ext_resource path="res://pokemon/komisja3/komisja3.tres" type="Resource" id=4]
+[ext_resource path="res://trainer/komisja/komisja_battle_graphic.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pokemon/komisja1/komisja1.tres" type="Resource" id=6]
+[ext_resource path="res://pokemon/komisja2/komisja2.tres" type="Resource" id=7]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+text = "Co Pan sobie wyobraża?"
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 1 )
+text = "Niech Pan bierze ten tytuł i się stąd zabiera!"
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+text = "Tego nie można nazwać publikacją!"
+
+[resource]
+script = ExtResource( 2 )
+id = ""
+name = "Komisja"
+pokemon = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ) ]
+items = [  ]
+is_player = false
+world_encounter = SubResource( 1 )
+battle_begin = SubResource( 2 )
+battle_loose = SubResource( 3 )
+world_loose = ExtResource( 3 )
+beat_flag_mutations = [  ]
+loose_flag_mutations = [  ]
+battle_graphic = ExtResource( 5 )

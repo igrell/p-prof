@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://stairs3/stairs3.png" type="Texture" id=1]
 [ext_resource path="res://widgets/tween_ex.gd" type="Script" id=2]
@@ -8,16 +8,24 @@
 [ext_resource path="res://stairs3/stairs3.gd" type="Script" id=6]
 [ext_resource path="res://stairs3/exitStairs3.gd" type="Script" id=7]
 [ext_resource path="res://blinders.tscn" type="PackedScene" id=8]
+[ext_resource path="res://world/trigger.gd" type="Script" id=9]
+[ext_resource path="res://world/text.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.25, 33.25 )
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 17.3848
-height = 158.141
+radius = 14.4904
+height = 112.349
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8.25, 16 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 80.25, 33.25 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4.18249, 29.0951 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8.25, 29.4375 )
 
 [node name="level" type="Node2D"]
 script = ExtResource( 6 )
@@ -32,55 +40,102 @@ follow_viewport_enable = true
 script = ExtResource( 2 )
 
 [node name="Stairs3" type="Sprite" parent="."]
-position = Vector2( 80, 72 )
+position = Vector2( 59, 20 )
 scale = Vector2( 0.129863, 0.129968 )
 texture = ExtResource( 1 )
+offset = Vector2( 161.709, 400.099 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="NoEntryCollisions" type="StaticBody2D" parent="YSort"]
 position = Vector2( 105, 56 )
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( 1, -46 )
-rotation = 0.492183
-shape = SubResource( 1 )
-
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
 position = Vector2( 137, 24 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -58, -61 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -25, 84 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
-position = Vector2( -25, 41 )
-rotation = 1.88845
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( 30, 54 )
+rotation = 2.29511
 shape = SubResource( 3 )
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( 22, -34 )
+rotation = 0.701511
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -68, -47 )
+rotation = -0.0455332
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -23, 79 )
+rotation = -0.00130255
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/NoEntryCollisions"]
+position = Vector2( -92, 36 )
+shape = SubResource( 4 )
+
 [node name="player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 147.2, 88.7938 )
+position = Vector2( 153.156, 95.5813 )
+
+[node name="Node2D" type="Node2D" parent="YSort"]
+
+[node name="teksty" type="Node2D" parent="YSort"]
+
+[node name="ponder1" type="Node2D" parent="YSort/teksty"]
+position = Vector2( -35, -26.0384 )
+script = ExtResource( 10 )
+text = "Moment uświadomienia sobie nagości jest zatem kluczowym momentem, który
+jeśli oczywiście towarzyszy mu pokora i ukorzenie
+potwierdza spożycie z drzewa poznania, i można wtedy już spokojnie zawnioskować gremialnie o nadanie stopnia doktora habilitowanego."
+
+[node name="trigger" type="Area2D" parent="YSort/teksty/ponder1"]
+collision_layer = 0
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/teksty/ponder1/trigger"]
+position = Vector2( 167, 86.0384 )
+rotation = 0.682424
+scale = Vector2( 0.986237, 1.0177 )
+shape = SubResource( 5 )
+
+[node name="ponder2" type="Node2D" parent="YSort/teksty"]
+script = ExtResource( 10 )
+text = "Osoba habilitanta, stając przed recenzentami i Radą Wydziału, jest już oczywiście naga na mocy harmonii pzredustanowionej,
+ale nie odczuwa jeszcze wstydu, bo nieświadoma jest własnej golizny.
+Doskonale natomiast jest jej świadoma Rada Wydziału, która wie, gdyż poznała osobę habilitanta już od pierwszego wejrzenia, a nawet wcześniej,
+bo opowiadano o niej na początku tegoż posiedzenia jejże."
+
+[node name="trigger" type="Area2D" parent="YSort/teksty/ponder2"]
+collision_layer = 0
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/teksty/ponder2/trigger"]
+position = Vector2( 106, 39 )
+rotation = 0.682424
+scale = Vector2( 0.986237, 1.0177 )
+shape = SubResource( 5 )
+
+[node name="exitStairs3" type="Node2D" parent="YSort"]
+script = ExtResource( 7 )
+
+[node name="trigger" type="Area2D" parent="YSort/exitStairs3"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/exitStairs3/trigger"]
+position = Vector2( 1, 29.4375 )
+shape = SubResource( 6 )
 
 [node name="info_box" parent="." instance=ExtResource( 3 )]
 visible = false
 
 [node name="transition" parent="." instance_placeholder="res://widgets/transition.tscn"]
 
-[node name="exitStairs3" type="Node2D" parent="."]
-script = ExtResource( 7 )
-
-[node name="trigger" type="Area2D" parent="exitStairs3"]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="exitStairs3/trigger"]
-position = Vector2( 0, 44 )
-shape = SubResource( 2 )
-
 [node name="blinders" parent="." instance=ExtResource( 8 )]
 
-[connection signal="body_entered" from="exitStairs3/trigger" to="exitStairs3" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/teksty/ponder1/trigger" to="YSort/teksty/ponder1" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/teksty/ponder2/trigger" to="YSort/teksty/ponder2" method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="YSort/exitStairs3/trigger" to="YSort/exitStairs3" method="_on_trigger_body_entered"]
