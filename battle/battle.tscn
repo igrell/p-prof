@@ -36,7 +36,7 @@ position = Vector2( 126, 29 )
 [node name="trainer" parent="enemy" instance_placeholder="res://trainer/red/red_battle_graphic.tscn"]
 
 [node name="stats" parent="enemy" instance=ExtResource( 13 )]
-visible = false
+position = Vector2( -69, -51 )
 
 [node name="player" type="Position2D" parent="."]
 script = ExtResource( 2 )
@@ -47,8 +47,7 @@ position = Vector2( 28, 73 )
 [node name="trainer" parent="player" instance_placeholder="res://trainer/blue/blue_trainer_graphic.tscn"]
 
 [node name="stats" parent="player" instance=ExtResource( 4 )]
-visible = false
-position = Vector2( 80, 72 )
+position = Vector2( 88, 72 )
 
 [node name="info" parent="." instance=ExtResource( 6 )]
 
@@ -93,36 +92,40 @@ margin_right = 93.0
 margin_bottom = 42.0
 
 [node name="col_1" type="VBoxContainer" parent="action_menu/m/m/rows"]
-margin_right = 47.0
+margin_right = 40.0
 margin_bottom = 36.0
 
 [node name="fight" parent="action_menu/m/m/rows/col_1" instance=ExtResource( 7 )]
+margin_right = 40.0
+margin_bottom = 10.0
 capitalize = true
-text = "fight"
+text = "ARGUMENTUJ"
 selected = true
 
 [node name="item" parent="action_menu/m/m/rows/col_1" instance=ExtResource( 7 )]
-margin_top = 17.0
-margin_bottom = 30.0
+margin_top = 14.0
+margin_right = 40.0
+margin_bottom = 24.0
 capitalize = true
-text = "item"
+text = "HEUREZA"
 
 [node name="col_2" type="VBoxContainer" parent="action_menu/m/m/rows"]
-margin_left = 51.0
-margin_right = 84.0
+margin_left = 44.0
+margin_right = 80.0
 margin_bottom = 36.0
 
 [node name="pokemon" parent="action_menu/m/m/rows/col_2" instance=ExtResource( 7 )]
-margin_right = 33.0
+margin_right = 36.0
+margin_bottom = 10.0
 capitalize = true
-text = "hat"
+text = "AKADEMITA"
 
 [node name="run" parent="action_menu/m/m/rows/col_2" instance=ExtResource( 7 )]
-margin_top = 17.0
-margin_right = 33.0
-margin_bottom = 30.0
+margin_top = 14.0
+margin_right = 36.0
+margin_bottom = 24.0
 capitalize = true
-text = "run"
+text = "UCIEKAJ"
 
 [node name="fight_menu" type="PanelContainer" parent="."]
 visible = false

@@ -11,10 +11,9 @@
 script = ExtResource( 3 )
 
 [node name="front" type="Sprite" parent="."]
-visible = false
 use_parent_material = true
-position = Vector2( 0, 4.76837e-07 )
-scale = Vector2( 0.05, 0.05 )
+position = Vector2( 0, -3 )
+scale = Vector2( 0.06, 0.06 )
 texture = ExtResource( 1 )
 
 [node name="back" type="Sprite" parent="."]

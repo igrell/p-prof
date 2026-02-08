@@ -29,15 +29,11 @@ position = Vector2( 37.761, -3.4847 )
 texture = ExtResource( 2 )
 
 [node name="name" type="Label" parent="."]
-margin_left = -0.0457001
-margin_top = -20.0
-margin_right = 159.954
-margin_bottom = 6.0
+margin_top = -17.0
+margin_right = 160.0
+margin_bottom = 9.0
 theme = ExtResource( 1 )
-text = "BULBASAUR"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "ZENON ELA"
 
 [node name="hp_bar" type="Node2D" parent="."]
 __meta__ = {

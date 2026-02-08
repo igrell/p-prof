@@ -28,10 +28,7 @@ margin_top = 52.0
 margin_right = 233.0
 margin_bottom = 78.0
 theme = ExtResource( 1 )
-text = "BULBASAUR"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "KOMISJA"
 
 [node name="level" type="Label" parent="."]
 margin_left = 104.0
