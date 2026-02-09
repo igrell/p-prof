@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://background.png" type="Texture" id=1]
 [ext_resource path="res://disclaimer/disclaimer.gd" type="Script" id=2]
 [ext_resource path="res://title/subtitle_theme.tres" type="Theme" id=3]
 [ext_resource path="res://title/title_theme.tres" type="Theme" id=4]
+[ext_resource path="res://blinders.tscn" type="PackedScene" id=5]
 
 [node name="level" type="Node2D"]
 script = ExtResource( 2 )
@@ -50,3 +51,5 @@ theme = ExtResource( 3 )
 text = "Naciśnij spację"
 align = 1
 valign = 1
+
+[node name="blinders" parent="." instance=ExtResource( 5 )]

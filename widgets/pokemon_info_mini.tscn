@@ -16,15 +16,12 @@ script = ExtResource( 3 )
 script = ExtResource( 7 )
 
 [node name="level" type="Label" parent="."]
-margin_left = 85.094
-margin_top = -5.0
-margin_right = 245.094
-margin_bottom = 21.0
+margin_left = 86.0
+margin_top = -1.0
+margin_right = 246.0
+margin_bottom = 25.0
 theme = ExtResource( 1 )
-text = "5"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "DR"
 
 [node name="level_label" type="Sprite" parent="."]
 position = Vector2( 83, 3.1398 )
@@ -36,9 +33,6 @@ margin_right = 160.0
 margin_bottom = 22.0
 theme = ExtResource( 1 )
 text = "BULBASAUR"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="hp_bar" type="Node2D" parent="."]
 position = Vector2( 8, 9 )
@@ -50,9 +44,6 @@ margin_right = 128.0
 margin_bottom = 22.0
 theme = ExtResource( 1 )
 text = "20/ 20"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="label" type="Sprite" parent="hp_bar"]
 position = Vector2( 6, 4 )

@@ -1,23 +1,25 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://pokemon/pokemon_model.gd" type="Script" id=1]
 [ext_resource path="res://moves/cut/cut.tres" type="Resource" id=2]
 [ext_resource path="res://pokemon/zenon_herald/zenon_herald_battle_graphic.tscn" type="PackedScene" id=3]
-[ext_resource path="res://moves/horn/horn.tres" type="Resource" id=4]
+[ext_resource path="res://moves/zenon_herald/kostki_lodu/kostki_lodu.tres" type="Resource" id=4]
+[ext_resource path="res://moves/zenon_herald/egzemplarz_autorski/egzeplarz_autorski.tres" type="Resource" id=5]
+[ext_resource path="res://moves/zenon_herald/pistolet_na_wode/pistolet_na_wode.tres" type="Resource" id=6]
 
 [resource]
 script = ExtResource( 1 )
 name = "ZENON HERALD"
 level = 1
-hp = 15
-max_hp = 15
+hp = 50
+max_hp = 50
 xp = 1
 exp_stat = 1
 attack = 1
 defense = 1
 speed = 1
 wild = false
-moves = [ ExtResource( 4 ) ]
+moves = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ]
 moves_to_learn = {
 2: ExtResource( 2 )
 }

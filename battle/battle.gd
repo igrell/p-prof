@@ -43,7 +43,7 @@ func _ready():
 	action_menu_.connect("item", self, "push_menu_", [items_])
 	action_menu_.connect("run", self, "_on_run")
 	action_menu_.connect("pokemon", self, "push_menu_", [pokemon_])
-	action_menu_.connect("pokemon", pokemon_.info, "set_text", ["Bring out which HATeMON?"])
+	action_menu_.connect("pokemon", pokemon_.info, "set_text", ["Który akademita?"])
 
 	fight_.connect("activated", self, "_on_attack_activated")
 	fight_.set_process_input(false)
@@ -144,7 +144,7 @@ func apply_swap_pokemon_(trainer:TrainerModel, pokemon_idx:int, graphics:Node) -
 
 	if trainer.active_pokemon:
 		if trainer.active_pokemon.hp > 0:
-			yield(info_box_.set_text("Enough! Come back!"), "done")
+			yield(info_box_.set_text("Starczy tego dobrego!"), "done")
 			graphics.stats.visible = false
 			yield(graphics.pokemon.withdraw(), "done")
 			graphics.pokemon.queue_free()
@@ -152,9 +152,16 @@ func apply_swap_pokemon_(trainer:TrainerModel, pokemon_idx:int, graphics:Node) -
 	graphics.trainer.exit($tween)
 	yield($tween.block(), "done")
 
-	var go_text = "Go! %s!" % pokemon.name
+	var go_text = "%s!" % pokemon.name
 	if not trainer.is_player:
-		go_text = "%s sent out %s." % [trainer.name, pokemon.name]
+		var pokemon_name = pokemon.name.split(' ')
+		if len(pokemon_name) == 2:
+			pokemon_name[0][-1] = "Ę"
+			pokemon_name[1][-1] = "Ą"
+			pokemon_name = pokemon_name[0] + " " + pokemon_name[1]
+			go_text = "%s cytuje %s." % [trainer.name, pokemon_name]
+		else:
+			go_text = "%s cytuje %s." % [trainer.name, pokemon.name]
 
 	yield(info_box_.set_text(go_text), "done")
 	graphics.stats.visible = true
@@ -190,9 +197,9 @@ func apply_attack_(attacking_pokemon:PokemonModel, defending_pokemon:PokemonMode
 
 	var move:MoveModel = attacking_pokemon.moves[move_idx]
 
-	var e := "Enemy " if attacking_pokemon == enemy.active_pokemon else ""
+	var e := "a" if "KOMISJA" in attacking_pokemon.name else ""
 
-	yield(info_box_.set_text("%s%s used %s!" % [e, attacking_pokemon.name, move.name]), "done")
+	yield(info_box_.set_text("%s opublikował%s %s!" % [attacking_pokemon.name, e, move.name]), "done")
 	if move.fx:
 		var fx = move.fx.instance()
 		fx.defender_graphics = defending_graphics.find_node("pokemon")
@@ -209,7 +216,7 @@ func apply_attack_(attacking_pokemon:PokemonModel, defending_pokemon:PokemonMode
 	yield(defending_graphics.find_node("stats").animate_hp(defending_pokemon.hp), "animate_hp_done")
 
 	if critical >= 2.0:
-		yield(info_box_.set_text_for_confirm("Critical hit!"), "done")
+		yield(info_box_.set_text_for_confirm("Trafna krytyka!"), "done")
 
 	info_box_.clear_text()
 	emit_signal("action_applied")
@@ -225,7 +232,7 @@ func game_() -> void:
 	for line in begin_battle.text.split("\n"):
 		yield(info_box_.set_text_for_confirm(line), "done")
 
-	yield(info_box_.set_text_for_confirm("%s wants to fight!" % enemy.name), "done")
+	yield(info_box_.set_text_for_confirm("%s wyzywa na debatę!" % enemy.name), "done")
 	info_box_.clear_text()
 
 	apply_enemy_swap_pokemon_(0)
@@ -249,37 +256,37 @@ func game_() -> void:
 				apply_player_swap_pokemon_(player_action.idx)
 				yield(self, "action_applied")
 			Action.Type.run:
-				yield(info_box_.set_text_for_confirm("You begin to run away..."), "done")
-				yield(info_box_.set_text_for_confirm("You ran in a circle by mistake."), "done")
+				yield(info_box_.set_text_for_confirm("Chcesz uciec..."), "done")
+				yield(info_box_.set_text_for_confirm("Nie ma ucieczki od Akademii."), "done")
 
 		if enemy.active_pokemon.is_dead():
 			enemy_graphics_.stats.visible = false
 			yield(enemy_graphics_.get_pokemon().faint(), "done")
-			yield(info_box_.set_text_for_confirm("Enemy %s fainted!" % enemy.active_pokemon.name), "done")
+			yield(info_box_.set_text_for_confirm("%s awansowała!" % enemy.active_pokemon.name), "done")
 
 			var last_level = player.active_pokemon.level
 			player.active_pokemon.xp += enemy.active_pokemon.get_exp_if_beat()
-			yield(info_box_.set_text_for_confirm("%s gained %d EXP." % [player.active_pokemon.name, enemy.active_pokemon.get_exp_if_beat()]), "done")
+			yield(info_box_.set_text_for_confirm("%s zdobyła %d punktów ministerialnych." % [player.active_pokemon.name, enemy.active_pokemon.get_exp_if_beat()]), "done")
 			
 			if last_level != player.active_pokemon.level:
 				player_graphics_.pokemon.level_up()
 				player_graphics_.stats.set_from_pokemon(player.active_pokemon)
-				yield(info_box_.set_text_for_confirm("%s leveled up!" % [player.active_pokemon.name]), "done")
+				yield(info_box_.set_text_for_confirm("%s awansował!" % [player.active_pokemon.name]), "done")
 				var move_to_learn = player.active_pokemon.moves_to_learn.get(player.active_pokemon.level)
 				if move_to_learn:
 					player_graphics_.pokemon.learn()
-					yield(info_box_.set_text_for_confirm("%s learnt %s!" % [player.active_pokemon.name, move_to_learn.name]), "done")
+					yield(info_box_.set_text_for_confirm("%s opanował %s!" % [player.active_pokemon.name, move_to_learn.name]), "done")
 					player.active_pokemon.moves.push_back(move_to_learn)
 					invalidate_attack_menu_(player.active_pokemon)
 
 			if enemy.is_dead():
-				yield(info_box_.set_text_for_confirm("%s is defeated!" % enemy.name), "done")
+				yield(info_box_.set_text_for_confirm("%s dała za wygraną!" % enemy.name), "done")
 				break
 
 			var next_enemy_pokemon_idx = enemy.pokemon.find(enemy.active_pokemon) + 1
 			var next_enemy_pokemon = enemy.pokemon[next_enemy_pokemon_idx]
-			yield(info_box_.set_text("%s is about to use %s." % [enemy.name, next_enemy_pokemon.name]), "done")
-			yield(info_box_.set_text("Will %s change HATeMON?" % [player.name], 0.0), "done")
+			yield(info_box_.set_text("%s użyje %s." % [enemy.name, next_enemy_pokemon.name]), "done")
+			yield(info_box_.set_text("Czy %s zmieni akademitę?" % [player.name], 0.0), "done")
 
 			push_menu_(yes_no_menu_)
 			var action:Action = yield(self, "action_choosen")
@@ -298,16 +305,16 @@ func game_() -> void:
 		yield(self, "action_applied")
 		
 		if player.active_pokemon.hp <= 0:
-			yield(info_box_.set_text("%s fainted." % player.active_pokemon.name), "done")
+			yield(info_box_.set_text("%s poległ." % player.active_pokemon.name), "done")
 			player_graphics_.stats.visible = false
 			yield(player_graphics_.pokemon.faint(), "done")
 			
 			if player.is_dead():
-				yield(info_box_.set_text("You are out of pokemon. You loose"), "done")
+				yield(info_box_.set_text("Wypstrykałeś się z akademitów. Zapraszamy za rok."), "done")
 				break
 			else:
 				push_menu_(pokemon_)
-				pokemon_.info.set_text("Bring out which POKeMON?")
+				pokemon_.info.set_text("Który akademita?")
 				info_box_.clear_text()
 				var action:Action = yield(self, "action_choosen")
 				apply_player_swap_pokemon_(action.idx)

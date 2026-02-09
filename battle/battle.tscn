@@ -31,7 +31,7 @@ script = ExtResource( 17 )
 script = ExtResource( 2 )
 
 [node name="pokemon" type="Position2D" parent="enemy"]
-position = Vector2( 126, 29 )
+position = Vector2( 127, 37 )
 
 [node name="trainer" parent="enemy" instance_placeholder="res://trainer/red/red_battle_graphic.tscn"]
 
@@ -136,9 +136,6 @@ margin_bottom = 144.0
 rect_min_size = Vector2( 0, 48 )
 size_flags_vertical = 10
 script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="m" type="NinePatchRect" parent="fight_menu"]
 margin_right = 126.0
@@ -156,16 +153,13 @@ custom_constants/margin_right = 6
 custom_constants/margin_top = 4
 custom_constants/margin_left = 6
 custom_constants/margin_bottom = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="col_1" type="VBoxContainer" parent="fight_menu/m/m"]
 margin_left = 6.0
 margin_top = 4.0
 margin_right = 120.0
 margin_bottom = 42.0
-custom_constants/separation = -5
+custom_constants/separation = 5
 
 [node name="yes_no_menu" type="PanelContainer" parent="."]
 visible = false
@@ -180,10 +174,8 @@ __meta__ = {
 menu_items = [ NodePath("m/m/col_1/yes"), NodePath("m/m/col_1/no") ]
 
 [node name="m" type="NinePatchRect" parent="yes_no_menu"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 45.0
-margin_bottom = 35.0
+margin_right = 46.0
+margin_bottom = 36.0
 texture = ExtResource( 11 )
 patch_margin_left = 8
 patch_margin_top = 8
@@ -204,22 +196,23 @@ __meta__ = {
 [node name="col_1" type="VBoxContainer" parent="yes_no_menu/m/m"]
 margin_left = 6.0
 margin_top = 4.0
-margin_right = 38.0
-margin_bottom = 28.0
+margin_right = 40.0
+margin_bottom = 30.0
 custom_constants/separation = -1
 
 [node name="yes" parent="yes_no_menu/m/m/col_1" instance=ExtResource( 7 )]
-margin_right = 33.0
+margin_right = 34.0
+margin_bottom = 10.0
 capitalize = true
-text = "yes"
+text = "TAK"
 selected = true
 
 [node name="no" parent="yes_no_menu/m/m/col_1" instance=ExtResource( 7 )]
-margin_top = 12.0
-margin_right = 33.0
-margin_bottom = 25.0
+margin_top = 9.0
+margin_right = 34.0
+margin_bottom = 19.0
 capitalize = true
-text = "no"
+text = "NIE"
 
 [node name="items" type="PanelContainer" parent="."]
 visible = false

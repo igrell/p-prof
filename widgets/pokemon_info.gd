@@ -9,7 +9,7 @@ export(int) var max_hp setget set_max_hp
 
 func set_from_pokemon(pokemon) -> void:
 	set_text(pokemon.name)
-	set_level(pokemon.level)
+	#set_level(pokemon.level)
 	set_max_hp(pokemon.max_hp)
 	set_hp(pokemon.hp)
 
